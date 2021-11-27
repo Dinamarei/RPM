@@ -1,0 +1,48 @@
+//#define CAYENNE_DEBUG       // Uncomment to show debug messages
+#define CAYENNE_PRINT Serial  // Comment this out to disable prints and save space
+#include <CayenneMQTTWiFi.h>
+#include "WiFi.h"
+#include "ESPAsyncWebServer.h"
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+
+#define RXD2 16
+#define TXD2 17
+String x; 
+
+char username[] = "019b8e70-4d10-11ec-9f5b-45181495093e";
+char password[] = "9481eb81d4e7acf2372ac483d99decfdba605675";
+char clientID[] = "9bfd9790-4f3d-11ec-bbfc-979c23804144";
+
+const char* ssid = "Dina";
+const char* myPassword = "11223344";
+
+void setup()
+{
+    Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
+    Serial.begin(9600);
+      delay(1000);
+      while (!Serial2);
+      Cayenne.begin(username, password, clientID, ssid, myPassword);
+ 
+}
+void loop()
+{  
+//   if (Serial2.available())
+//  {                                
+//      x= Serial2.read();
+//      Serial.println(x);
+//  }
+
+      Cayenne.loop();
+     // adjust to recieve as input
+     int heart_rate = 90;
+     int spio2 = 97;
+     int interval_for_medication = 2;
+     
+
+    Cayenne.virtualWrite(1,heart_rate, "sensor", "d");
+    Cayenne.virtualWrite(2,spio2, "sensor", "d");
+    Cayenne.virtualWrite(3,interval_for_medication, "sensor", "d");
+   delay(1);
+}
