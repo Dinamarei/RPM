@@ -21,7 +21,7 @@ Remind patients of pre-set medication times with a specified pre-configured voic
 Special SOS button is to be used by the patient in case of discomfort or when facing any adverse situation to send their location to their caregiver to be able to intervene immediately
 
 # System Design 
-![](https://github.com/Dinamarei/RPM/blob/main/Screen%20Shot%202021-11-18%20at%209.51.51%20PM.png)
+![](https://github.com/Dinamarei/RPM/blob/main/diagram.png?raw=true)
 
 ## Hardware Components 
 	•	BLE33 microcontroller
